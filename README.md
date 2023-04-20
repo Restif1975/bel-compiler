@@ -11,6 +11,7 @@ This intermediate code is the language of a virtual machine.
 Many virtual machines exist, like the Java Virtual Machine (JVM).
 
 The intermediate code used here is the language of the Emacs Lisp Virtual Machine.
+
 For example, the Bel program to print "Hello, World!" is:
 
 (print "Hello, World!")
@@ -33,8 +34,8 @@ This is the runtime environment.
 
 ## Requirements
 
-GNU Guile (version >= 3.0.9)
-GNU Emacs (version >= 28.2)
+- GNU Guile (version >= 3.0.9)
+- GNU Emacs (version >= 28.2)
 
 ## Getting started
 
@@ -65,25 +66,24 @@ Please note:
 - Some Bel features are missing e.g. streams, templates.
 - The Bel syntax for dyn was changed to dynamic-let and dynamic (see test.bel).
 
-Files description
+## Files description
 
-Macroexpansion: expand.scm
+expand.scm     --- macroexpansion
+mac.scm        --- predefined macros
+object.scm     --- Sexp->object
+comp.scm       --- compilation
+comp-init.scm  --- opcodes
+lib.bel        --- library functions source code
+prim.el        --- primitives
+lib.el         --- library functions wrappers
+test.bel       --- examples
 
-Predefined macros: mac.scm
+## Sources
 
-Compilation: object.scm, comp.scm, comp-init.scm
-
-Library functions: lib.bel, lib.elc, lib-cps.elc
-
-Runtime: prim.el, lib.el, wrapper.el
-
-Examples: test.bel
-
-Sources:
 - [Bel specification](http://www.paulgraham.com/bel.html)
 - [Emacs Lisp Bytecode Reference Manual](https://rocky.github.io/elisp-bytecode.pdf)
 - Christian Queinnec, Lisp in Small Pieces, Cambridge University Press, 1996.
-- Emacs source: (https://github.com/emacs-mirror/emacs/tree/master/lisp/emacs-lisp)
+- Emacs source: https://github.com/emacs-mirror/emacs/tree/master/lisp/emacs-lisp
 
 
 
