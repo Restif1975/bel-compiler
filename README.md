@@ -49,7 +49,7 @@ The Bel directory should be added to Guile and Emacs load paths.
 Assuming a Bel file test.bel, typing:
 
 ```
-guile -e main -s main test
+guile -e main -s main.scm test
 ```
 
 will produce two files:
