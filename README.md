@@ -48,18 +48,22 @@ The Bel directory should be added to Guile and Emacs load paths.
 
 Assuming a Bel file test.bel, typing:
 
+```
 ./main test
+```
 
 will produce two files:
 
 - test.ebel, with Bel macros expanded
 - test.elc, the corresponding Emacs Lisp bytecode.
 
-To run the compiled file:
+To run the compiled file, type in Emacs:
 
-- In Emacs, type M-x ielm
-- (load "start.el")
-- (load "test.elc")
+```
+M-x ielm
+(load "start.el")
+(load "test.elc")
+```
 
 Please note:
 
