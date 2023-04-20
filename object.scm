@@ -142,7 +142,7 @@
 (define-class Free-Reference (Reference)
   (index #:init-keyword #:index))
 
-(define-class Dynamic-Let (Program)    ; TODO (?) add to lift!
+(define-class Dynamic-Let (Program)
   (variable #:init-keyword #:variable)
   (argument #:init-keyword #:argument)
   (body #:init-keyword #:body))
