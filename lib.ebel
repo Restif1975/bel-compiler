@@ -1,0 +1,217 @@
+(assign
+  type
+  (fn (x)
+      (if (symbol x)
+        'symbol
+        (string x)
+        'string
+        (number x)
+        'number
+        (pair x)
+        'pair)))
+
+(assign join (fn ((o x) (o y)) (el-cons x y)))
+
+(assign
+  prn
+  (fn args
+      (map (fn (x) (print x) (prc \sp)) args)
+      (prc \lf)
+      (last args)))
+
+(assign
+  last
+  (fn (xs)
+      (if (no xs)
+        nil
+        (no (cdr xs))
+        (car xs)
+        (last (cdr xs)))))
+
+(assign no (fn (x) (id x nil)))
+
+(assign atom (fn (x) (no (pair x))))
+
+(assign
+  all
+  (fn (f xs)
+      (if (no xs) t (f (car xs)) (all f (cdr xs)) nil)))
+
+(assign
+  proper
+  (fn (x)
+      ((fn (g6789)
+           (if g6789
+             g6789
+             ((fn (g6790) (if g6790 g6790 nil))
+              ((fn (g6792) (if g6792 (proper (cdr x)) nil))
+               (pair x)))))
+       (no x))))
+
+(assign
+  some
+  (fn (f l)
+      (if (no l) nil (f (car l)) l (some f (cdr l)))))
+
+(assign idfn (fn (x) x))
+
+(assign
+  reduce
+  (fn (f xs)
+      (if (no (cdr xs))
+        (car xs)
+        (f (car xs) (reduce f (cdr xs))))))
+
+(assign cons (fn args (reduce join args)))
+
+(assign
+  map
+  (fn (f l)
+      (if (no l)
+        nil
+        (cons (f (car l)) (map f (cdr l))))))
+
+(assign
+  first
+  (fn (n xs)
+      (if (> n 0)
+        (cons (car xs) (first (- n 1) (cdr xs)))
+        nil)))
+
+(assign
+  snoc
+  (fn args (append (car args) (cdr args))))
+
+(assign
+  rev
+  (fn (xs)
+      (if (no xs) nil (snoc (rev (cdr xs)) (car xs)))))
+
+(assign
+  mem
+  (fn (x ys (o f =)) (some (fn (y) (f y x)) ys)))
+
+(assign in (fn (x . ys) (mem x ys)))
+
+(assign
+  adjoin
+  (fn (x ys (o f =))
+      (if (mem x ys f) ys (cons x ys))))
+
+(assign
+  foldr
+  (fn (f base . args)
+      (if ((fn (g6794)
+               (if g6794
+                 g6794
+                 ((fn (g6795) (if g6795 g6795 nil))
+                  (some no args))))
+           (no args))
+        base
+        (apply f
+               (snoc (map car args)
+                     (apply foldr f base (map cdr args)))))))
+
+(assign
+  part
+  (fn (f . args)
+      (fn rest (apply f (append args rest)))))
+
+(assign
+  insert
+  (fn (f x ys)
+      (if (no ys)
+        (list x)
+        (f x (car ys))
+        (cons x ys)
+        (cons (car ys) (insert f x (cdr ys))))))
+
+(assign
+  sort
+  (fn (f xs) (foldr (part insert f) nil (rev xs))))
+
+(assign
+  find
+  (fn (f xs)
+      ((fn (it) (if it (car it))) (some f xs))))
+
+(assign
+  keep
+  (fn (f xs)
+      (if (no xs)
+        nil
+        (f (car xs))
+        (cons (car xs) (keep f (cdr xs)))
+        (keep f (cdr xs)))))
+
+(assign
+  rem
+  (fn (x ys (o f =))
+      (keep (fn (y) (no (f y x))) ys)))
+
+(assign
+  get
+  (fn (k kvs (o f =))
+      (find (fn (kv) (f (car kv) k)) kvs)))
+
+(assign
+  put
+  (fn (k v kvs (o f =))
+      (cons (cons k v)
+            (rem k kvs (fn (x y) (f (car x) y))))))
+
+(assign con (fn (x) (fn args x)))
+
+(assign
+  compose
+  (fn fs
+      (reduce
+        (fn (f g) (fn args (f (apply g args))))
+        ((fn (g6797)
+             (if g6797
+               g6797
+               ((fn (g6798) (if g6798 g6798 nil)) (list idfn))))
+         fs))))
+
+(assign upon (fn args (fn (f) (apply f args))))
+
+(assign best (fn (f xs) (car (sort f xs))))
+
+(assign max (fn args (best > args)))
+
+(assign min (fn args (best < args)))
+
+(assign
+  of
+  (fn (f g) (fn args (apply f (map g args)))))
+
+(assign
+  len
+  (fn (xs)
+      (if (no xs) 0 ((compose inc len cdr) xs))))
+
+(assign inc (fn (n) (+ n 1)))
+
+(assign dec (fn (n) (- n 1)))
+
+(assign
+  nth
+  (fn (n xs)
+      (if (= n 1) (car xs) (nth (- n 1) (cdr xs)))))
+
+(assign
+  nthcdr
+  (fn (n xs)
+      (if (> n 0) (nthcdr (- n 1) (cdr xs)) xs)))
+
+(assign
+  adjoin
+  (fn (x ys (o f =))
+      (if (mem x ys f) ys (cons x ys))))
+
+(assign
+  caris
+  (fn (x val (o f =))
+      ((fn (g6800) (if g6800 (f (car x) val) nil))
+       (pair x))))
+
