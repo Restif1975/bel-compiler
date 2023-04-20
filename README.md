@@ -7,7 +7,7 @@ This is a Bel compiler where Bel code is analysed and translated to a lower leve
 What is this lower level language?  
 It is not machine language, it is a step above called intermediate code.
 
-This intermediate code is the language of a virtual machine. 
+This intermediate code is the language of a virtual machine.   
 Many virtual machines exist, like the Java Virtual Machine (JVM).  
 
 The intermediate code used here is the language of the Emacs Lisp Virtual Machine.
@@ -25,7 +25,7 @@ The compilation of this program gives:
 
 or in a more compact form:
 
-[192 193 33 135]
+[192 193 33 135]  
 [prin1 "Hello, World!"]  
 
 This compact form is called bytecode, as each instruction is represented by a byte (octet), an integer between 0 and 255.
