@@ -1,0 +1,166 @@
+; -*-Scheme-*-
+
+(def type (x)
+     (if (symbol x) 'symbol
+	 (string x) 'string
+	 (number x) 'number
+	 (pair x) 'pair))
+
+(def join ((o x) (o y))
+     (el-cons x y))
+
+(def prn args
+     (map (fn (x)
+	      (print x) (prc \sp))
+	  args)
+     (prc \lf)
+     (last args))
+
+(def last (xs)
+     (if (no xs) nil
+	 (no (cdr xs)) (car xs)
+	 (last (cdr xs))))
+
+(def no (x)
+     (id x nil))
+
+(def atom (x)
+     (no (pair x)))
+
+(def all (f xs)
+     (if (no xs) t
+	 (f (car xs)) (all f (cdr xs))
+	 nil))
+
+(def proper (x)
+     (or (no x)
+	 (and (pair x) (proper (cdr x)))))
+
+(def some (f l)
+     (if (no l) nil
+	  (f (car l)) l
+	  (some f (cdr l))))
+
+(def idfn (x) x)
+
+(def reduce (f xs)
+     (if (no (cdr xs))
+	 (car xs)
+	 (f (car xs) (reduce f (cdr xs)))))
+
+(def cons args
+     (reduce join args))
+
+(def map (f l)
+     (if (no l)
+	 nil
+	 (cons (f (car l)) (map f (cdr l)))))
+
+(def first (n xs)
+     (if (> n 0)
+	 (cons (car xs) (first (- n 1) (cdr xs)))
+	 nil))
+
+(def snoc args
+     (append (car args) (cdr args)))
+
+(def rev (xs)
+     (if (no xs)
+	 nil
+	 (snoc (rev (cdr xs)) (car xs))))
+
+(def mem (x ys (o f =))
+     (some (fn (y) (f y x)) ys))
+
+(def in (x . ys)
+  (mem x ys))
+
+(def adjoin (x ys (o f =))
+  (if (mem x ys f) ys (cons x ys)))
+
+(def foldr (f base . args)
+     (if (or (no args) (some no args))
+	 base
+	 (apply f (snoc (map car args)
+			(apply foldr f base (map cdr args))))))
+
+(def part (f . args)
+     (fn rest
+	 (apply f (append args rest))))
+
+(def insert (f x ys)
+     (if (no ys) (list x)
+	 (f x (car ys)) (cons x ys)
+	 (cons (car ys) (insert f x (cdr ys)))))
+
+(def sort (f xs)
+     (foldr (part insert f) nil (rev xs)))
+
+(def find (f xs)
+     (aif (some f xs) (car it)))
+
+(def keep (f xs)
+     (if (no xs) nil
+	 (f (car xs)) (cons (car xs) (keep f (cdr xs)))
+	 (keep f (cdr xs))))
+
+(def rem (x ys (o f =))
+     (keep (fn (y) (no (f y x))) ys))
+
+(def get (k kvs (o f =))
+     (find (fn (kv) (f (car kv) k)) kvs))
+
+(def put (k v kvs (o f =))
+     (cons (cons k v)
+	   (rem k kvs (fn (x y) (f (car x) y)))))
+
+(def con (x)
+     (fn args x))
+
+(def compose fs
+     (reduce (fn (f g)
+		 (fn args (f (apply g args))))
+	     (or fs (list idfn))))
+
+(def upon args
+     (fn (f) (apply f args)))
+
+(def best (f xs)
+     (car (sort f xs)))
+
+(def max args
+     (best > args))
+
+(def min args
+     (best < args))
+
+(def of (f g)
+     (fn args (apply f (map g args))))
+
+(def len (xs) (if (no xs) 0 ((compose inc len cdr) xs)))
+
+(def inc (n) (+ n 1))
+
+(def dec (n) (- n 1))
+
+(def nth (n xs)
+     (if (= n 1)
+	 (car xs)
+	 (nth (- n 1) (cdr xs))))
+
+(def nthcdr (n xs)
+     (if (> n 0)
+	 (nthcdr (- n 1) (cdr xs))
+	 xs))
+
+(def adjoin (x ys (o f =))
+     (if (mem x ys f) ys (cons x ys)))
+
+(def caris (x val (o f =))
+     (and (pair x) (f (car x) val)))
+
+
+
+
+
+

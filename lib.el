@@ -1,0 +1,51 @@
+;; Bel library functions -*- lexical-binding: t -*-
+
+(load "wrapper.el")
+
+;; Library functions wrapper
+
+(defwrap1 _type type_plain type_cps)
+(defwrapN _join join_plain join_cps)
+(defwrapN _prn prn_plain prn_cps)
+(defwrap1 _last last_plain last_cps)
+(defwrap1 _no no_plain no_cps)
+(defwrap1 _atom atom_plain atom_cps)
+(defwrap2 _all all_plain all_cps)
+(defwrap1 _proper proper_plain proper_cps)
+(defwrap2 _some some_plain some_cps)
+(defwrap1 _idfn idfn_plain idfn_cps)
+(defwrap2 _reduce reduce_plain reduce_cps)
+(defwrapN _cons cons_plain cons_cps)
+(defwrap2 _map map_plain map_cps)
+(defwrap2 _first first_plain first_cps)
+(defwrapN _snoc snoc_plain snoc_cps)
+(defwrap1 _rev rev_plain rev_cps)
+(defwrapN _mem mem_plain mem_cps)
+(defwrapN _in in_plain in_cps)
+(defwrapN _adjoin adjoin_plain adjoin_cps)
+(defwrapN _foldr foldr_plain foldr_cps)
+(defwrapN _part part_plain part_cps)
+(defwrap3 _insert insert_plain insert_cps)
+(defwrap2 _sort sort_plain sort_cps)
+(defwrap2 _find find_plain find_cps)
+(defwrap2 _keep keep_plain keep_cps)
+(defwrapN _rem rem_plain rem_cps)
+(defwrapN _get get_plain get_cps)
+(defwrapN _put put_plain put_cps)
+(defwrapN _upon upon_plain upon_cps)
+(defwrapN _compose compose_plain compose_cps)
+(defwrap2 _best best_plain best_cps)
+(defwrapN _max max_plain max_cps)
+(defwrapN _min min_plain min_cps)
+(defwrap2 _of of_plain of_cps)
+(defwrap1 _len len_plain len_cps)
+(defwrap1 _inc inc_plain inc_cps)
+(defwrap1 _dec dec_plain dec_cps)
+(defwrap2 _nth nth_plain nth_cps)
+(defwrap2 _nthcdr nthcdr_plain nthcdr_cps)
+(defwrapN _adjoin adjoin_plain adjoin_cps)
+(defwrapN _caris caris_plain caris_cps)
+
+
+
+
