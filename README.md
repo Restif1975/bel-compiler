@@ -50,11 +50,8 @@ Assuming a Bel file test.bel, typing:
 
 will produce two files:
 
-- test.ebel
-- test.elc
-
-test.ebel is test.bel with Bel macros expanded.
-test.elc is test.ebel compiled to Emacs Lisp bytecode.
+- test.ebel, with Bel macros expanded
+- test.elc, the corresponding Emacs Lisp bytecode.
 
 To run the compiled file:
 
@@ -70,39 +67,25 @@ Please note:
 
 Files description
 
-Macroexpansion
-expand.scm
+Macroexpansion: expand.scm
 
-Predefined macros
-mac.scm
+Predefined macros: mac.scm
 
-Compilation
-object.scm
-comp.scm
-comp-init.scm
+Compilation: object.scm, comp.scm, comp-init.scm
 
-Library functions
-lib.bel
-lib.elc
-lib-cps.elc
+Library functions: lib.bel, lib.elc, lib-cps.elc
 
-Runtime
-prim.el
-lib.el
-wrapper.el
+Runtime: prim.el, lib.el, wrapper.el
 
-Examples
-test.bel
-test1.bel
-test2.bel
-test3.bel
-test4.bel
+Examples: test.bel
 
 Sources:
-[Bel specification](http://www.paulgraham.com/bel.html)
-[Emacs Lisp Bytecode Reference Manual](https://rocky.github.io/elisp-bytecode.pdf)
-Christian Queinnec, Lisp in Small Pieces, Cambridge University Press, 1996.
-Emacs source: (https://github.com/emacs-mirror/emacs/tree/master/lisp/emacs-lisp)
+- [Bel specification](http://www.paulgraham.com/bel.html)
+- [Emacs Lisp Bytecode Reference Manual](https://rocky.github.io/elisp-bytecode.pdf)
+- Christian Queinnec, Lisp in Small Pieces, Cambridge University Press, 1996.
+- Emacs source: (https://github.com/emacs-mirror/emacs/tree/master/lisp/emacs-lisp)
+
+
 
 
 
