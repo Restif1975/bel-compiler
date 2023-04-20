@@ -67,7 +67,7 @@ M-x ielm
 
 Please note:
 
-- Bel read abbreviations are not available
+- Bel reader abbreviations are not available
 - Some Bel features are missing e.g. streams, templates.
 - The Bel syntax for dyn was changed to dynamic-let and dynamic (see test.bel).
 
