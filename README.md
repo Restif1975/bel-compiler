@@ -38,7 +38,9 @@ GNU Emacs (version >= 28.2)
 
 ## Getting started
 
+```sh
 git clone https://github.com/Restif1975/bel-compiler
+```
 
 The Bel directory should be added to Guile and Emacs load paths.
 
