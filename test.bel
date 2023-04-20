@@ -1,0 +1,98 @@
+; -*-Scheme-*-
+
+((rfn fact (n)
+      (if (= n 0) 1 (* n (fact (- n 1)))))
+ 5)
+
+(set foo 813)
+
+(dynamic-let foo 3
+	     (let foo 0
+	       (list (dynamic foo) foo)))
+      
+(in (type "foo") 'pair 'number 'symbol 'string)
+
+(mem 'b '(a b c))
+(mem 'e '(a b c))
+(mem 3 '(2 4 6 8) >)
+
+(snoc '(a b c) 'd 'e)
+
+(first 3 '(1 2 3 4 5))
+
+(print "foo")
+
+(with (x "foo" y 'bar)
+      (prn 'x x 'y y))
+
+(map (fn (x) (* 2 x)) '(1 2 3))
+
+((if foo + *) 3 4)
+
+(some (fn (x) (= x 0)) '(1 2 3 0))
+
+(all number '(1 2 3))
+
+(join 'a 'b)
+(join 'a)
+(join)
+(id (join 'a 'b) (join 'a 'b))
+(cons 'a 'b 'c '(d e f))
+
+(def test-fn (x (x1 x2) (o y x) (o z 21) . rest)
+     (list x y z x1 x2 rest))
+
+(def test-sname (s)
+     (case s
+       + 'plus
+       - 'minus
+       'unknown))
+
+(best (of > len) '((a b) (a b c d) (a) (a b c)))
+
+(ccc (fn (c) (c 'a) (car 'b)))
+
+(let bb (n-of 1000 (rand 50))
+  (first 100 (best > bb)))
+
+(let x '((a . 1) (b . 2) (c . 3))
+  (get 'a x)
+  (put 'a 9 (put 'z 26 x)))
+
+(onerr 'oops (car 'a))
+
+(safe (car 'a))
+
+(map (upon '(a b c))
+     (list car cadr cdr))
+
+(let x '(1 2 3)
+  (++ (car x) 10)
+  (-- (cadr x))
+  x)
+
+(let x '(a b c)
+  (push 'z x)
+  (pull 'c x)
+  x)
+
+(let x '(7 3 0 9 2 4 1)
+  (pull 4 x >=)
+  x)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
