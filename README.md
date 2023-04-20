@@ -4,7 +4,7 @@ Several implementations of Bel already exist where Bel code is interpreted i.e. 
 
 This is a Bel compiler where Bel code is analysed and translated to a lower level language.
 
-What is this lower level language?
+What is this lower level language?  
 It is not machine language, it is a step above called intermediate code.
 
 This intermediate code is the language of a virtual machine. 
@@ -68,15 +68,15 @@ Please note:
 
 ## Files description
 
-expand.scm     --- macroexpansion
-mac.scm        --- predefined macros
-object.scm     --- Sexp->object
-comp.scm       --- compilation
-comp-init.scm  --- opcodes
-lib.bel        --- library functions source code
-prim.el        --- primitives
-lib.el         --- library functions wrappers
-test.bel       --- examples
+expand.scm     --- macroexpansion  
+mac.scm        --- predefined macros  
+object.scm     --- Sexp->object  
+comp.scm       --- compilation  
+comp-init.scm  --- opcodes  
+lib.bel        --- library functions source code  
+prim.el        --- primitives  
+lib.el         --- library functions wrappers  
+test.bel       --- examples  
 
 ## Sources
 
