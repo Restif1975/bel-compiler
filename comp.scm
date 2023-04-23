@@ -6,7 +6,6 @@
   #:use-module (ice-9 pretty-print)
   #:use-module (srfi srfi-1)  ; proper-list?
   #:use-module (oop goops)
-  #:use-module (oop goops describe)
   #:export (comp
 	    comp-file
 	    read-file))
