@@ -30,7 +30,7 @@ or in a more compact form:
 
 This compact form is called bytecode, as each instruction is represented by a byte (octet), an integer between 0 and 255.
 
-This intermediate code can then be executed in Emacs by a bytecode interpreter.  
+This intermediate code can then be executed in Emacs by a bytecode interpreter (written in C).  
 This is the runtime environment.
 
 ## Requirements
@@ -67,9 +67,9 @@ M-x ielm
 
 Please note:
 
-- Bel reader abbreviations are not available
-- Some Bel features are missing e.g. streams, templates.
-- The Bel syntax for dyn was changed to dynamic-let and dynamic (see test.bel).
+- Bel readtime abbreviations are currently not available
+- Some Bel features are still missing e.g. streams, templates
+- The Bel syntax for dyn was changed to dynamic-let and dynamic (see test.bel)
 
 ## Files description
 <pre>
@@ -87,24 +87,7 @@ test.bel       --- examples
 
 - [Bel specification](http://www.paulgraham.com/bel.html)
 - [Emacs Lisp Bytecode Reference Manual](https://rocky.github.io/elisp-bytecode.pdf)
-- Christian Queinnec, Lisp in Small Pieces, Cambridge University Press, 1996.
-- Emacs source: https://github.com/emacs-mirror/emacs/tree/master/lisp/emacs-lisp
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- Dybvig, Friedman, Haynes, Expansion-Passing Style: Beyond Conventional Macros, 1986
+- Christian Queinnec, Lisp in Small Pieces, Cambridge University Press, 1996
+- Emacs source in Lisp: https://github.com/emacs-mirror/emacs/tree/master/lisp/emacs-lisp
 
