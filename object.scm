@@ -776,7 +776,7 @@
     #:function k
     #:arguments (convert2arguments args)))
 
-;; Intermediate continuations will be reduced to let forms in letify
+;; Intermediate continuation applications will be reduced to let forms in letify
 ;; Only the initial Continuation will remain in tail position
 (define (convert2Application tail? k . args)
   (if tail?
@@ -920,13 +920,6 @@
 	     #:arguments (slot-ref e 'arguments))
 	   k
 	   tail?)))
-
-(define-method (->CPS (e Dynamic-Let) k tail?)
-  (convert2Application tail? k
-		       (make Dynamic-Let
-			 #:variable (slot-ref e 'variable)
-			 #:argument (slot-ref e 'argument)
-			 #:body (->CPS (slot-ref e 'body) k #t))))
 
 (define-method (->CPS (e Dynamic-Let) k tail?)
   (->CPS (slot-ref e 'argument)
