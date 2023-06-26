@@ -44,8 +44,6 @@ This is the runtime environment.
 git clone https://github.com/Restif1975/bel-compiler
 ```
 
-The Bel directory should be added to Guile and Emacs load paths.
-
 Assuming a Bel file test.bel, typing:
 
 ```
