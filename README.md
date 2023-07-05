@@ -43,6 +43,7 @@ This is the runtime environment.
 ```sh
 git clone https://github.com/Restif1975/bel-compiler
 ```
+The bel-compiler directory should be added to Emacs load-path.
 
 Assuming a Bel file test.bel, typing:
 
